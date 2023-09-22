@@ -1,9 +1,25 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Mosque } from './typeorm/entities/Mosque';
+import { Notice } from './typeorm/entities/Notice';
+import { MosqueModule } from './mosque/mosque.module';
 
 @Module({
-  imports: [],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: 'ideascale.me',
+      port: 3306,
+      username: 'root',
+      password: 'brewski01',
+      database: 'nestjs_sql_tutorial',
+      entities: [Mosque, Notice],
+      synchronize: true,
+    }),
+    MosqueModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
