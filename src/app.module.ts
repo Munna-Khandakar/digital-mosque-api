@@ -10,10 +10,10 @@ import { MosqueModule } from './mosque/mosque.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'ideascale.me',
+      host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'brewski01',
+      password: '',
       database: 'nestjs_sql_tutorial',
       entities: [Mosque, Notice],
       synchronize: true,
